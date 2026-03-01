@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conso WMS Pro</title>
+  <link rel="stylesheet" href="src/styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>Conso WMS Pro</h1>
+    <p>Gestion d'entrepôt mobile-first, offline-ready, orientée scan.</p>
+  </header>
+
+  <main class="layout">
+    <section class="card">
+      <h2>Import inventaire CSV</h2>
+      <p>Format attendu: <code>sku,description,bin,qty,capacity</code>.</p>
+      <input id="csvFile" type="file" accept=".csv,text/csv" />
+      <button id="importBtn">Importer</button>
+      <button id="exportBtn">Exporter JSON</button>
+      <pre id="importResult" class="result"></pre>
+    </section>
+
+    <section class="card">
+      <h2>Scan Processor</h2>
+      <div class="row">
+        <input id="scanInput" type="text" placeholder="Ex: ITEM-SKU001 ou BIN-A01" />
+        <button id="scanBtn">Scanner</button>
+      </div>
+      <pre id="scanResult" class="result"></pre>
+    </section>
+
+    <section class="card">
+      <h2>Tâches Remise / Consolidation</h2>
+      <div class="row">
+        <button id="remiseBtn">Générer remises</button>
+        <button id="consoBtn">Suggestions consolidation</button>
+      </div>
+      <pre id="taskResult" class="result"></pre>
+    </section>
+
+    <section class="card">
+      <h2>Palette & transferts</h2>
+      <div class="row">
+        <input id="orderRef" type="text" placeholder="Référence commande" />
+        <button id="paletteBtn">Créer palette</button>
+      </div>
+      <div class="row">
+        <input id="fromBin" type="text" placeholder="BIN source" />
+        <input id="toBin" type="text" placeholder="BIN destination" />
+        <input id="transferSku" type="text" placeholder="SKU" />
+        <input id="transferQty" type="number" min="1" value="1" />
+        <button id="transferBtn">Transférer</button>
+      </div>
+      <pre id="opsResult" class="result"></pre>
+    </section>
+
+    <section class="card ia-zone">
+      <h2>Zone IA (Azure AI Foundry)</h2>
+      <p>Configurez ici votre endpoint IA et une instruction pour piloter le WMS.</p>
+      <label>Endpoint</label>
+      <input id="aiEndpoint" type="url" value="https://alexdam28-2806-resource.services.ai.azure.com/api/projects/alexdam28-2806" />
+      <label>Clé API (stockée localement)</label>
+      <input id="aiKey" type="password" placeholder="Votre clé API" />
+      <label>Prompt opérateur</label>
+      <textarea id="aiPrompt" rows="4" placeholder="Ex: Donne les bins à vider en priorité."></textarea>
+      <div class="row">
+        <button id="saveAiBtn">Sauvegarder config IA</button>
+        <button id="testAiBtn">Tester connexion</button>
+      </div>
+      <pre id="aiResult" class="result"></pre>
+    </section>
+
+    <section class="card">
+      <h2>Tableau de bord inventaire</h2>
+      <div id="inventoryGrid"></div>
+    </section>
+  </main>
+
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>

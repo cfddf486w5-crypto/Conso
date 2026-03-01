@@ -1,0 +1,79 @@
+:root {
+  --bg: #f4f6f8;
+  --card: #ffffff;
+  --text: #1f2937;
+  --accent: #155eef;
+  --border: #dbe2ea;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.app-header {
+  padding: 1.2rem;
+  background: linear-gradient(120deg, #153a78, #155eef);
+  color: white;
+}
+
+.app-header h1 { margin: 0; }
+.app-header p { margin: 0.4rem 0 0; opacity: 0.95; }
+
+.layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.06);
+}
+
+h2 { margin-top: 0; font-size: 1.1rem; }
+.row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+input, button, textarea {
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: 1px solid #c5cfdb;
+}
+
+input, textarea { width: 100%; }
+.row input { flex: 1; }
+button {
+  border: none;
+  color: white;
+  background: var(--accent);
+  font-weight: 600;
+  cursor: pointer;
+}
+button:hover { filter: brightness(0.94); }
+.result {
+  margin-top: 0.8rem;
+  background: #0f172a;
+  color: #e2e8f0;
+  border-radius: 8px;
+  padding: 0.8rem;
+  overflow: auto;
+  min-height: 76px;
+}
+
+#inventoryGrid table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.9rem;
+}
+#inventoryGrid th, #inventoryGrid td {
+  border: 1px solid #dbe2ea;
+  padding: 0.5rem;
+  text-align: left;
+}
+.ia-zone { outline: 2px solid #bfd3ff; }
